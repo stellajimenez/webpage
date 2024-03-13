@@ -1,4 +1,6 @@
-AuthType Basic\
-AuthName "Protected Site"\
-AuthUserFile https://siriusganesh.com/assets/pdf/Sirius_Ganesh_Resume.pdf\
-require valid-user\
+<Files "Sirius_Ganesh_Resume.pdf">
+    AuthType Basic
+    AuthName "Protected Site"
+    AuthUserFile .htpasswd
+    Require valid-user
+</Files>
