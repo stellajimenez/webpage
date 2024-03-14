@@ -404,7 +404,8 @@ img {
 .skills__header{
   display: flex;
   align-items: center;
-  margin-bottom: var(--mb-2-5);
+  /* margin-bottom: var(--mb-2-5); */
+  margin-bottom: 10px;
   cursor: pointer;
 }
 
