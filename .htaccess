@@ -1,0 +1,6 @@
+<Files "Sirius_Ganesh_Resume.pdf">
+    AuthType Basic
+    AuthName "Protected Site"
+    AuthUserFile .htpasswd
+    Require valid-user
+</Files>
