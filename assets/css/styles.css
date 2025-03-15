@@ -6,8 +6,7 @@
     --header-height: 3rem;
 
     /*========== Colors ==========*/
-    /* Change favorite color */
-    --hue-color: 250; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
+    --hue-color: 250; /* Purple base hue */
 
     /* HSL color mode */
     --first-color: hsl(var(--hue-color), 69%, 61%);
@@ -22,11 +21,10 @@
     --container-color: #fff;
     --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
     --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+    --shadow-color: hsla(var(--hue-color), 20%, 50%, 0.2);
 
     /*========== Font and typography ==========*/
     --body-font: 'Poppins', sans-serif;
-
-    /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
     --big-font-size: 2rem;
     --h1-font-size: 1.5rem;
     --h2-font-size: 1.25rem;
@@ -39,8 +37,7 @@
     --font-medium: 500;
     --font-semi-bold: 600;
 
-    /*========== Margenes Bottom ==========*/
-    /* .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
+    /*========== Margins Bottom ==========*/
     --mb-0-25: .25rem;
     --mb-0-5: .5rem;
     --mb-0-75: .75rem;
@@ -54,9 +51,12 @@
     --z-tooltip: 10;
     --z-fixed: 100;
     --z-modal: 1000;
+
+    /*========== Transitions ==========*/
+    --transition: all 0.3s ease;
 }
 
-/* Font size for large devices */
+/* Responsive typography */
 @media screen and (min-width: 968px) {
     :root {
         --big-font-size: 3rem;
@@ -69,153 +69,198 @@
     }
 }
 
-/*========== Variables Dark theme ==========*/
-
-
-/*========== Button Dark/Light ==========*/
-
+/*========== Dark Theme Variables ==========*/
+@media (prefers-color-scheme: dark) {
+    :root {
+        --body-color: hsl(var(--hue-color), 20%, 10%);
+        --container-color: hsl(var(--hue-color), 20%, 15%);
+        --title-color: hsl(var(--hue-color), 8%, 85%);
+        --text-color: hsl(var(--hue-color), 8%, 75%);
+        --text-color-light: hsl(var(--hue-color), 8%, 55%);
+        --input-color: hsl(var(--hue-color), 20%, 20%);
+        --scroll-bar-color: hsl(var(--hue-color), 12%, 20%);
+        --scroll-thumb-color: hsl(var(--hue-color), 12%, 40%);
+    }
+}
 
 /*==================== BASE ====================*/
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base font size for rem consistency */
 }
 
 body {
-  margin: 0 0 var(--header-height) 0;
-  font-family: var(--body-font);
-  font-size: var(--normal-font-size);
-  background-color: var(--body-color);
-  color: var(--text-color);
+    margin: 0 0 var(--header-height) 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+    transition: var(--transition); /* Smooth theme switch */
 }
 
 h1, h2, h3, h4 {
-  color: var(--title-color);
-  font-weight: var(--font-semi-bold);
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
+    color: var(--first-color);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--first-color-alt);
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove unwanted spacing */
 }
 
 /*==================== REUSABLE CSS CLASSES ====================*/
 .section {
-  padding: 2rem 0 4rem;
+    padding: 2rem 0 4rem;
 }
 
 .section__title {
-  font-size: var(--h1-font-size);
-  color: var(--title-color);
+    font-size: var(--h1-font-size);
+    color: var(--title-color);
+    margin-bottom: var(--mb-1);
 }
 
 .section__subtitle {
-  display: block;
-  font-size: var(--small-font-size);
-  margin-bottom: var(--mb-3);
+    display: block;
+    font-size: var(--small-font-size);
+    margin-bottom: var(--mb-3);
+    color: var(--text-color-light);
 }
 
 .section__title, 
 .section__subtitle {
-  text-align: center;
+    text-align: center;
 }
 
 /*==================== LAYOUT ====================*/
 .container {
-  max-width: 768px;
-  margin-left: var(--mb-1-5);
-  margin-right: var(--mb-1-5);
+    max-width: 768px;
+    margin-left: var(--mb-1-5);
+    margin-right: var(--mb-1-5);
+    padding: 0 var(--mb-1);
 }
 
 .grid {
-  display: grid;
-  gap: 1.5rem;
+    display: grid;
+    gap: 1.5rem;
 }
 
 .header {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: var(--z-fixed);
-  background-color: var(--body-color);
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+    background-color: var(--body-color);
+    box-shadow: 0 -2px 10px var(--shadow-color);
+    transition: var(--transition);
 }
 
 /*==================== NAV ====================*/
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem var(--mb-1-5);
+}
 
+.nav__list {
+    display: flex;
+    gap: var(--mb-2);
+}
 
-/* show menu */
+.nav__link {
+    color: var(--text-color);
+    font-weight: var(--font-medium);
+}
 
-
-/* Active link */
-
-
-/* Change background header */
-
-
-/*==================== HOME ====================*/
-
+.nav__link:hover,
+.nav__link.active {
+    color: var(--first-color);
+}
 
 /*==================== BUTTONS ====================*/
+.button {
+    display: inline-block;
+    background-color: var(--first-color);
+    color: #fff;
+    padding: var(--mb-0-75) var(--mb-1-5);
+    border-radius: .5rem;
+    font-weight: var(--font-medium);
+    transition: var(--transition);
+}
 
+.button:hover {
+    background-color: var(--first-color-alt);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
 
-/*==================== ABOUT ====================*/
+/*==================== SCROLL BAR ==========*/
+::-webkit-scrollbar {
+    width: .5rem;
+    background-color: var(--scroll-bar-color);
+}
 
+::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb-color);
+    border-radius: .5rem;
+}
 
-/*==================== SKILLS ====================*/
-
-
-/*==================== QUALIFICATION ====================*/
-
-
-/*==================== SERVICES ====================*/
-
-
-/* Active Modal */
-
-
-/*==================== PORTFOLIO ====================*/
-
-
-/*==================== PROJECT IN MIND ====================*/
-
-
-/*==================== TESTIMONIAL ====================*/
-
-
-/*==================== CONTACT ME ====================*/
-
-
-/*==================== FOOTER ====================*/
-
-
-/*========== SCROLL UP ==========*/
-
-
-/* Show scroll */
-
-
-/*========== SCROLL BAR ==========*/
-
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--first-color-alt);
+}
 
 /*==================== MEDIA QUERIES ====================*/
-/* For small devices */
+/* Small devices */
+@media screen and (max-width: 350px) {
+    .container {
+        margin-left: var(--mb-1);
+        margin-right: var(--mb-1);
+    }
+    
+    .nav__list {
+        gap: var(--mb-1);
+    }
+}
 
+/* Medium devices */
+@media screen and (min-width: 568px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .section {
+        padding: 3rem 0 5rem;
+    }
+}
 
-/* For medium devices */
-
-
-/* For large devices */
+/* Large devices */
+@media screen and (min-width: 968px) {
+    .container {
+        max-width: 1200px;
+    }
+    
+    .header {
+        padding: 0 var(--mb-2);
+    }
+}
