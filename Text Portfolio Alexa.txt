@@ -1,17 +1,16 @@
 * HOME
 home__social
-https://www.linkedin.com/
+https://www.linkedin.com/in/stella-jimenez/
 https://dribbble.com/
 https://github.com/
 
 home__description
-High level experience in web design and development knowledge, producing quality work.
+Innovation Strategist for Human-Centered Tech & Business Design
 
 
 * ABOUT
 about__description
-Web developer, with extensive knowledge and years of experience, working in web technologies and Ui / Ux design, delivering quality work.
-
+I'm Stella Jimenez, a strategist in innovation and digital transformation with over a decade of experience applying methodologies like Design Thinking, Lean Startup, and process mapping to solve real-world challenges. I've co-founded companies, led teams, and designed solutions with global impact across sectors such as healthcare, tourism, manufacture and finance. Today, as an independent consultant, I help leaders and organizations turn vision into impact by connecting technology, design, purpose, and people.
 about__info-name
 Years <br> experience
 Completed <br> project
